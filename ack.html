@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit Light Curve Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-content {
+            text-align: left;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .doc-icon {
+            width: 28px;
+            height: 28px;
+            fill: #000000;
+        }
+
+        .made-by {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 40px;
+        }
+
+        .made-by a {
+            text-decoration: none;
+            color: #666666;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .made-by a:hover {
+            color: #000000;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666666;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #000000;
+        }
+
+        .nav-right a {
+            color: #999999;
+            font-size: 14px;
+        }
+
+        .nav-right a:hover {
+            color: #666666;
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+
+        .step {
+            /* Remove display:none here! */
+            display: none; 
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-header {
+            margin-bottom: 40px;
+        }
+
+        .step-title-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin: 0;
+        }
+
+        .step-description {
+            font-size: 18px;
+            color: #666666;
+            margin-bottom: 40px;
+        }
+
+        /* Image-Text Layout */
+        .image-text-layout {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+            overflow: clip;
+            overflow-clip-margin: content-box;
+        }
+
+        .text-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .text-content h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .text-content p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .image-content {
+            flex: 0 0 30%;
+            min-width: 0;
+            overflow: clip;
+            overflow-clip-margin: content-box;
+        }
+
+        .image-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-text-layout-2 {
+            display: flex;
+            gap: 40px;
+            margin: 20px 0;
+            padding: 0px 0;
+            overflow: clip;
+            overflow-clip-margin: content-box;
+            align-items: center; /* vertically center */
+            justify-content: center; /* horizontally center */
+        }
+
+        .text-content-2 {
+            flex: 1;
+            min-width: 0;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-content-2 h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .text-content-2 p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .image-content-2 {
+            flex: 0 0 50%;
+            min-width: 0;
+            overflow: clip;
+            overflow-clip-margin: content-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .image-content-2 img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image-Text Layout 3 (image left, text right) */
+        .image-text-layout-3 {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+            overflow: clip;
+            overflow-clip-margin: content-box;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-content-3 {
+            flex: 0 0 50%;
+            min-width: 0;
+            overflow: clip;
+            overflow-clip-margin: content-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .image-content-3 img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-content-3 {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-content-3 h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .text-content-3 p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        
+        
+        /* Divider */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #e5e5e5;
+            margin: 40px 0;
+        }
+
+        /* Content */
+        .content {
+            margin-bottom: 40px;
+        }
+
+        .content h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #000000;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .content li {
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        /* Navigation Buttons */
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .nav-button:hover {
+            background-color: #333333;
+        }
+
+        .nav-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .nav-button.secondary {
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #e5e5e5;
+        }
+
+        .nav-button.secondary:hover {
+            background-color: #f5f5f5;
+        }
+
+        .nav-button.quiz {
+            background-color: #ffffff;
+            color: #000000;
+            border: 1px solid #e5e5e5;
+        }
+
+        .nav-button.quiz:hover {
+            background-color: #f5f5f5;
+        }
+
+        .step-indicator {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #e5e5e5;
+            margin-top: 8px;
+            padding: 60px 0;
+            background-color: #fafafa;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 800px;
+        }
+
+        .footer-signature h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+
+        .footer-signature p {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .footer-links h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #000000;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .nav-left,
+            .nav-right {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .nav-right a {
+                font-size: 13px;
+            }
+
+            main {
+                padding: 40px 0;
+            }
+
+            .step-title {
+                font-size: 24px;
+            }
+
+            .step-description {
+                font-size: 16px;
+            }
+
+            .step-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            /* Mobile Image-Text Layout */
+            .image-text-layout,
+            .image-text-layout-2,
+            .image-text-layout-3 {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .image-text-layout .image-content,
+            .image-text-layout .text-content,
+            .image-text-layout-2 .image-content-2,
+            .image-text-layout-2 .text-content-2,
+            .image-text-layout-3 .image-content-3,
+            .image-text-layout-3 .text-content-3 {
+                flex: none;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .nav-left,
+            .nav-right {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .step-number {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 14px;
+            }
+        }
+
+        /* Image-Image Layout */
+        .image-image-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            margin: 60px 0;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: auto;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
+            flex-wrap: nowrap; /* Prevent wrapping on desktop */
+        }
+
+        .image-image-layout .image-side {
+            min-width: 320px;
+            max-width: 400px;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-image-layout img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .image-image-layout .caption {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #333;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .image-image-layout {
+                gap: 20px;
+            }
+            .image-image-layout .image-side {
+                min-width: 200px;
+                max-width: 260px;
+            }
+            .image-image-layout img {
+                max-width: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+            .image-image-layout {
+                flex-direction: column;
+                gap: 20px;
+                margin: 40px 0;
+                overflow-x: visible;
+                align-items: center;
+                flex-wrap: nowrap;
+            }
+            .image-image-layout .image-side {
+                min-width: 0;
+                max-width: 100%;
+            }
+            .image-image-layout img {
+                max-width: 100%;
+            }
+        }
+        
+
+        /* Dashboard cards (new) */
+        .dashboard {
+            display: grid;
+            /* two columns: left (content) and right (orbit + info) */
+            grid-template-columns: 1fr 415px;
+            grid-template-rows: auto auto;
+            gap: 24px;
+            margin: 28px 0 36px 0;
+            align-items: start;
+        }
+        
+        /* layout placements:
+           - intro: left / top
+           - orbit: right / top
+           - stats: left / bottom
+           - info: right / bottom (directly below orbit)
+        */
+        .card-intro { grid-column: 1 / 3; grid-row: 1 / 2; }
+        .card-orbit { grid-column: 1 / 2; grid-row: 2 / 3; }
+        .card-stats { grid-column: 1 / 2; grid-row: 3 / 4; }
+        .card-info  { grid-column: 2 / 3; grid-row: 2 / 4; }
+
+         .dashboard-card {
+             background: #ffffff;
+             border: 1px solid #e9e9e9;
+             border-radius: 12px;
+             padding: 34px;
+             box-shadow: 0 8px 30px rgba(18, 20, 24, 0.04);
+             transition: transform .22s ease, box-shadow .22s ease;
+         }
+ 
+         .dashboard-card.large h3 {
+             font-size: 22px;
+             margin-bottom: 12px;
+             color: #111827;
+         }
+         .dashboard-card.info h3 {
+             font-size: 22px;
+             margin-bottom: 12px;
+             color: #111827;
+         }
+ 
+         .dashboard-card.large p {
+             color: #4b5563;
+             line-height: 1.6;
+             font-size: 15px;
+         }
+ 
+         .dashboard-card.media {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             min-height: 260px;
+             padding: 28px;
+         }
+ 
+         /* orbit graphic: responsive and centered in its column */
+         .orbits-svg {
+             width: 100%;
+             max-width: 200px;
+             height: auto;
+             display: block;
+             margin: 0 auto;
+         }
+ 
+         /* Hover "pop" */
+         .dashboard-card:hover {
+             transform: translateY(-6px) scale(1.02);
+             box-shadow: 0 12px 40px rgba(18,20,24,0.12);
+         }
+         
+         /* minor SVG styling */
+         .orbits-svg circle.orbit-track { stroke: #e5e7eb; fill: none; stroke-width: 1.2; }
+         .orbits-svg circle.planet { fill: #111827; }
+ 
+         .dashboard-card.stats h4 {
+             font-size: 18px;
+             margin-bottom: 14px;
+             color: #111827;
+         }
+
+         .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #f1f1f1;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .stat-row:first-of-type { border-top: none; padding-top: 0; }
+
+        .stat-label { color: #6b7280; }
+        .stat-value { font-weight: 700; color: #111827; }
+
+        .dashboard-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding: 10px 16px;
+            background: #111827;
+            color: #ffffff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @media (max-width: 960px) {
+            .dashboard { grid-template-columns: 1fr; grid-template-rows: none; }
+            .card-intro, .card-orbit, .card-stats, .card-info { grid-column: auto; grid-row: auto; }
+            .orbits-svg { max-width: 320px; }
+        }
+
+        /* centered, responsive iframe for embedded tools */
+        .iframe-embed {
+            display: block;
+            margin: 0 auto;       /* centers the iframe */
+            width: 80%;
+            max-width: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .iframe-embed { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>
+                    <svg class="doc-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                    </svg>
+                    Transit Light Curve Guide
+                </h1>
+                <p class="made-by">By <a href="https://linkedin.com/in/wijdan-ali-374793288/">Wijdan Ali</a></p>
+                <nav>
+                    <ul class="nav-left">
+                        <li><a href="#" data-step="1" class="nav-link active">Acknowledgements</a></li>
+                        <li><a href="index.html" class="extra-link">Transit Light Curve Guide</a></li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li><a href="https://wijdanali7869.wixsite.com/neoclimex" class="extra-link">NeoClimex</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Step 1 -->
+            <div class="step active" data-step="1">
+                <div class="step-header">
+                    <div class="step-title-container">
+                        <div class="step-number">!</div>
+                        <h2 class="step-title">Acknowledgements</h2>
+                    </div>
+                    <i class="step-description">We are fortunate to live in a time not only of great discoveries and advancements in the field of exoplanet science  <br /> but to live in a time when the most cutting-edge data for studying these planets is freely available for anyone to download off the internet </i> <br /> <b style="font-size: 13;">Andrew Vanderburg</b>
+                    <!-- small divider under the header/quote for clearer separation -->
+                
+                </div>
+
+                <div class="divider"></div>
+ 
+                <div class="content">
+                    <h3 style="font-size: 1.2em;"><b>First and foremost, this guide is inspired by <a href="https://avanderburg.github.io/tutorial/tutorial.html" style="font-weight:bold; text-decoration:none; color: lightslategray;">Andrew Vanderburg's Transit Light Curve Tutorial</a>, primarily focused on Kepler Mission's transits.</b></h3>
+                    <br />
+                    <li>
+                        <b>Overview Page</b>
+                        <ul>1. <a href="https://youtu.be/8v4SRfmoTuU" style="font-weight:bold; text-decoration:none; color: lightslategray;">Transit Guide Youtube Video</a> | NASA</ul>
+                        <ul>2. Brightness-Time GIF Animation | NASA</ul>
+                        <ul>3. <a href="https://avanderburg.github.io/tutorial/transitdepth.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">G-Dwarf VS M-Dwarf Transits Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                    </li>
+
+                    <li>
+                        <b>Understanding Transit Light Curves Page</b>
+                        <ul>1. <a href="https://avanderburg.github.io/tutorial/hatp7.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">Example Light Curve Graph Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                        <ul>2. <a href="https://avanderburg.github.io/tutorial/hatp7scale.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">Example Light Curve Graph Brightness Explanation Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                        <ul>3. <a href="https://avanderburg.github.io/tutorial/hatp7transits.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">Example Light Curve Transits Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                        <ul>4. <a href="https://avanderburg.github.io/tutorial/hatp7depth.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">Example Light Curve Depth Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                        <ul>5. <a href="https://avanderburg.github.io/tutorial/hatp7period.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">Example Light Curve Period Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                        <ul>6. <a href="https://avanderburg.github.io/tutorial/koi2nomodel.png" style="font-weight:bold; text-decoration:none; color: lightslategray;">Example Zoomed In Light Curve Image</a> | Andrew Vanderburg's Transit Light Curve Tutorial</ul>
+                        <ul>7. Real Image Of Star | NASA</ul>
+                        <ul>8. Light Curve Animation Graph | Jason Eastman</ul>
+                    </li>
+
+                    <li>
+                        <b>Getting Data Page</b>
+                        <ul>1. <a href="https://mast.stsci.edu/portal/Mashup/Clients/Mast/Portal.html" style="font-weight:bold; text-decoration:none; color: lightslategray;">MAST: Barbara A. Mikulski Archive for Space Telescopes</a> </ul>
+                        <ul>2. <a href="https://fetch-light-curves.streamlit.app/" style="font-weight:bold; text-decoration:none; color: lightslategray;">Fetch Light Curves Tool</a> | Wijdan Ali </ul>
+                    </li>
+
+                    <li>
+                        <b>Analysing Light Curves Page</b>
+                        <ul>1. <a href="https://chart-studio.plotly.com/" style="font-weight:bold; text-decoration:none; color: lightslategray;">Plotly Chart Studio</a> </ul>
+                    </li>
+                                         
+                </div>
+
+            
+            </div>
+
+    
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-signature">
+                        <h3>About Me</h3>
+                        <p><i>1/4</i> physicst <i>1/4</i> tech enthusiast <br /> <i>1/4</i> coder <i>1/4</i> chill guy</p>
+                    </div>
+                    <div class="footer-links">
+                        <h3></h3>
+                        <ul>
+                            <li><a href="ack.html">Acknowledgements</a></li>
+                            <li><a href="https://linkedin.com/in/wijdan-ali-374793288/">My Linkedin</a></li>
+                            <li><a href="https://wijdanali7869.wixsite.com/neoclimex">NeoClimex</a></li>
+                            <li><a href="mailto:wijdan.nadeem@gmail.com">Email Me</a></li>
+                            <li><a href="https://scientiamag.org/author/wijdan-ali/">Checkout My Writings</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    let currentStep = 1;
+
+    function showStep(stepNumber) {
+        // Hide all steps
+        document.querySelectorAll('.step').forEach(step => {
+            step.classList.remove('active');
+        });
+
+        // Show current step (add null check)
+        const stepEl = document.querySelector(`.step[data-step="${stepNumber}"]`);
+        if (stepEl) {
+            stepEl.classList.add('active');
+        }
+
+        // Update navigation (add null check)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        const navLink = document.querySelector(`.nav-link[data-step="${stepNumber}"]`);
+        if (navLink) {
+            navLink.classList.add('active');
+        }
+
+        // Enable/disable Previous button
+        document.querySelectorAll('.nav-button.secondary').forEach(btn => {
+            if (stepNumber === 1) {
+                btn.setAttribute('disabled', 'disabled');
+            } else {
+                btn.removeAttribute('disabled');
+            }
+        });
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        currentStep = stepNumber;
+    }
+
+    function nextStep() {
+        if (currentStep < 4) {
+            showStep(currentStep + 1);
+        }
+    }
+
+    function previousStep() {
+        if (currentStep > 1) {
+            showStep(currentStep - 1);
+        }
+    }
+
+    function restartTutorial() {
+        showStep(1);
+    }
+
+    function takeQuiz() {
+        alert('Quiz functionality coming soon!');
+    }
+
+    // Navigation click handlers
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const stepNumber = parseInt(e.currentTarget.dataset.step);
+            showStep(stepNumber);
+        });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' && currentStep < 4) {
+            nextStep();
+        } else if (e.key === 'ArrowLeft' && currentStep > 1) {
+            previousStep();
+        }
+    });
+
+    // Expose functions to global scope for button onclicks
+    window.nextStep = nextStep;
+    window.previousStep = previousStep;
+    window.restartTutorial = restartTutorial;
+    window.takeQuiz = takeQuiz;
+});
+</script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
