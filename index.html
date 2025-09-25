@@ -5,6 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="PB5mgZIrnp8iB89VZ7VAGK7TEaXd75ipyfLrkJDbjIc" />
 
+        <!-- Primary SEO -->
+        <meta name="description" content="Beginner-friendly guide to detecting and analysing exoplanet transits using the transit method. Learn to fetch TESS/Kepler light curves (MAST), measure transit depth, calculate planet radius & orbital period, and visualise data with Plotly and interactive tools.">
+        <meta name="keywords" content="transit light curve, exoplanet transit, exoplanets, transit method, light curve analysis, TESS, Kepler, MAST, fetch light curves, TIC ID, planet radius, orbital period, transit depth, normalized flux, photometry, Plotly, data visualization, astronomy tutorial, beginner exoplanet guide, citizen science, amateur astronomy, transit photometry, light curve processing, Kepler data, TESS data, online tutorial, educational guide, HAT-P-7b, TOI-2119, brown dwarf, Rp Rstar, Rp=R*sqrt(depth), habitable zone, TIC, TOI, Fetch Light Curves tool, Wijdan Ali, NeoClimex, high school project, astrophysics, planetary science, time series analysis, light curve visualization, online tools, Plotly Chart Studio, Streamlit, fetch-light-curves, normalized flux vs time">
+        <meta name="author" content="Wijdan Ali">
+        <link rel="canonical" href="index.html">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="Transit Light Curve Guide — Learn to detect and analyse exoplanet transits">
+        <meta property="og:description" content="A practical, beginner-friendly tutorial for finding and analysing exoplanet transits using Kepler and TESS data. Includes step-by-step instructions, visual examples, and tools to fetch and visualise light curves.">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="index.html">
+        <meta property="og:image" content="transitgif2.gif">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Transit Light Curve Guide — Detect & Analyse Exoplanet Transits">
+        <meta name="twitter:description" content="Beginner-friendly guide to finding exoplanets with the transit method. Learn to fetch TESS/Kepler light curves, measure transit depth, compute planet size and orbital period, and visualise data.">
+        <meta name="twitter:image" content="transitgif2.gif">
+
+        <!-- Structured data (JSON-LD) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Transit Light Curve Guide",
+            "description": "Beginner-friendly guide to detecting and analysing exoplanet transits using Kepler and TESS light curves. Includes hands-on steps for fetching data, plotting light curves, and computing planet properties.",
+            "author": {
+                "@type": "Person",
+                "name": "Wijdan Ali",
+                "url": "https://linkedin.com/in/wijdan-ali-374793288/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "NeoClimex"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "index.html"
+            }
+        }
+        </script>
 
     <title>Transit Light Curve Guide</title>
     <link rel="icon" href="ico.png" type="image/x-icon">
@@ -899,13 +940,13 @@
                             </ul>
                     
                             <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                                <img src="transitgif2.gif" style="display: block; margin: 0; padding: 0;">
+                                <img src="transitgif2.gif" alt="Animated GIF showing a planet transiting a star and the corresponding light curve dip (visual explanation of transit light curve)" style="display: block; margin: 0; padding: 0;">
                                 <b style="margin: 3px; padding: 3px; line-height: 1; text-align: center;">Different Sized Planets Exhibit Different Light Curves</b>
                             </div>
                     
                             <p style="margin: 20px; padding-top: 25px; ">Measuring the transit depth is not enough to measure the size of the planet -- you also need to know the size of the star it is transiting. The image below illustrates how a planet transiting a small star (on the right) causes a larger transit signal than the same sized planet transiting a large star on the left: </p>
                             <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                                <img src="transitdepth.png" style="display: block; margin: 0; padding: 0;">
+                                <img src="transitdepth.png" alt="Illustration comparing transit depth for planets transiting a small star versus a large star — same-size planet causes a deeper dip around a smaller star" style="display: block; margin: 0; padding: 0;">
                             </div>
                             <p style="margin-top: 32px;">
                                 Specifically, the transit depth is equal to the ratio between the planet's radius (Rp) and the star's radius (R*) squared:
@@ -950,21 +991,21 @@
                     <p>Launched in 2009, Kepler spent nearly a decade searching for transiting exoplanets before concluding its mission in 2018. During its operation, it stood as the most powerful planet-hunting observatory ever built. Similarly, there's also an ongoing <a href="https://science.nasa.gov/mission/tess/" style="font-weight:bold; text-decoration:none; color: lightslategray;" class="made-by">TESS Mission</a> that aims to find exoplanets around nearby stars. Best of all, every bit of data these missions collected is <b>freely available to the public -- ready to be downloaded by anyone with an internet connection.</b></p>
                     <p>Shown below is a light curve of an exoplanet called <a href="https://en.wikipedia.org/wiki/HAT-P-7b" style="font-weight:bold; text-decoration:none; color: lightslategray;" class="made-by">HAT-P-7b</a></p>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="1_2.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="1_2.png" alt="Light curve plot of exoplanet HAT-P-7b showing brightness versus time with multiple transit dips (Kepler data example)" style="display: block; margin: 0; padding: 0;">
                     </div>
                 <div class="image-text-layout-2">
                     <div class="text-content-2">
                         <p>Notice the y-axis. The entire range of brightness is just 1, and the span of the graph stays within that value. It is like zooming in on a small section of the brightness versus time graph  (only about 1 percent of the total) to observe a conspicuous dip. This shows that searching for transiting planets demands extremely precise brightness measurements.</p>
                     </div>
                     <div class="image-content-2">
-                        <img src="2_2.png" alt="Description">
+                        <img src="2_2.png" alt="Close-up of normalized flux showing very small brightness variations — demonstrates precision required to detect transits" >
                     </div>
                 </div>
 
                 <!-- New image-text-layout-3: image left, text right -->
                 <div class="image-text-layout-3">
                     <div class="image-content-3">
-                        <img src="3_2.png" alt="Description">
+                        <img src="3_2.png" alt="Light curve segment with three transits marked; example of repeated dips used to confirm a planet" >
                     </div>
                     <div class="text-content-3">
                         <p>
@@ -978,7 +1019,7 @@
                         </p>
                     </div>
                     <div class="image-content-2">
-                        <img src="4_2.png" alt="Description">
+                        <img src="4_2.png" alt="Diagram illustrating how transit depth encodes planet size (deeper dip = larger blocked area)" >
                     </div>
                 </div>
 
@@ -1027,7 +1068,7 @@
 
                 <div class="image-text-layout-3">
                     <div class="image-content-3">
-                        <img src="5_2.png" alt="Description">
+                        <img src="5_2.png" alt="Light curve showing several transit events used to compute a planet's orbital period and estimate volume" >
                     </div>
                     <div class="text-content-3">
                         <p>
@@ -1042,7 +1083,7 @@
                 </div>
                 <div class="image-text-layout-2">
                     <div class="image-content-2">
-                        <img src="6_2.png" alt="Description">
+                        <img src="6_2.png" alt="Zoomed light curve showing a round-bottomed transit profile caused by stellar limb darkening" >
                     </div>
                     <div class="text-content-2">
                         <p>
@@ -1054,11 +1095,11 @@
                 <!-- Image-Image Layout: Two images side by side, mobile scrollable -->
                 <div class="image-image-layout">
                     <div class="image-side">
-                        <img src="7_2.jpg" style="display: block; margin: 0; padding: 0;">
+                        <img src="7_2.jpg" alt="Telescope image of a star used as an example in transit observations" style="display: block; margin: 0; padding: 0;">
                         <b style="margin: 3px; padding: 3px; line-height: 1; text-align: center;">Real Image Of Star</b>
                     </div>
                     <div class="image-side">
-                        <img src="8_2.gif" style="display: block; margin: 0; padding: 0;">
+                        <img src="8_2.gif" alt="Animated light curve graph showing a transit event and corresponding brightness dip" style="display: block; margin: 0; padding: 0;">
                         <b style="margin: 3px; padding: 3px; line-height: 1; text-align: center;">Light Curve Animation Graph</b>
 
                     </div>
@@ -1092,12 +1133,12 @@
                     <h3>1. Go to the <a href="https://mast.stsci.edu/portal/Mashup/Clients/Mast/Portal.html" style="font-weight:bold; text-decoration:none; color: lightslategray;">MAST Website</a></h3>
                     <br />
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="1_3.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="1_3.png" alt="Screenshot of MAST portal showing the 'Select a collection' dropdown used to choose catalogs" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br/>
                     <p><b>In the upper left corner, click on the ‘Select a collection’ drop down and look for the option ‘MAST Catalogs’ (red arrow).  In the ‘Mission’ drop down, select ‘TESS Input v8.2’ (blue arrow). Finally, click on the ‘Advanced Search’ button (green arrow).</b></p>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="2_3.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="2_3.png" alt="MAST portal screenshot highlighting the 'Mission' dropdown set to 'TESS Input v8.2' and the 'Advanced Search' button" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br/>
                     <h3>2. Filter Stars To Study</h3>
@@ -1111,21 +1152,21 @@
                         </ul>
                     </div>
                     <div class="image-content-2">
-                        <img src="3_3.png" alt="Description">
+                        <img src="3_3.png" alt="MAST catalog columns panel showing the 'Stellar Radius' and 'T_eff' columns selected for filtering" >
                     </div>
                     </div>
                     <p><b>In this example, I will narrow down their ranges to around Sun’s radius and temperature. After applying the filters, click 'Search' on the top left</b></p>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="4_3.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="4_3.png" alt="MAST search results after applying filters showing a table of stars and columns" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br/>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="5_3.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="5_3.png" alt="Search result rows displaying TIC IDs — pick a TIC ID to fetch the corresponding light curve" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br/>
                     <div class="image-text-layout-3">
                     <div class="image-content-3">
-                        <img src="6_3.png" alt="Description">
+                        <img src="6_3.png" alt="MAST results highlighting the TIC (TESS Input Catalog) ID column used to identify stars" >
                     </div>
                     <div class="text-content-3">
                         <p>
@@ -1137,7 +1178,7 @@
                     <h2>Use The <b>Fetch Light Curves</b> Tool</h2>
                     <p>Enter the TIC ID that you’ll copy from the MAST Website (red arrow). Over the years, there may be multiple light curve observations recorded, so feel free to select any (blue arrow). Before downloading, it is suggested to quickly preview the light curve and roughly identify whether there are transits in the first place or not (green arrow). Lastly, download the light curve on your device (pink arrow).</p>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="7_3.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="7_3.png" alt="Fetch Light Curves tool screenshot showing where to paste a TIC ID, preview observations, and download processed light curves" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br/>
 
@@ -1180,32 +1221,32 @@
                     <br />
                     <p><b>Remove existing data (if any)</b></p>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="1_4.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="1_4.png" alt="Plotly Chart Studio screenshot showing empty plot area before importing a CSV light curve" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br />
                     <br />
                     <p><b>Click 'Import' on the top right and upload the csv file that you downloaded using the Fetch Light Curves tool.</b></p>
                     <div class="image-image-layout">
                         <div class="image-side">
-                            <img src="2_4.png" style="display: block; margin: 0; padding: 0;">
+                            <img src="2_4.png" alt="Plotly import dialog screenshot showing CSV upload for light curve data" style="display: block; margin: 0; padding: 0;">
                             <b style="margin: 3px; padding: 3px; line-height: 1; text-align: center;"></b>
                         </div>
                         <div class="image-side">
-                            <img src="3_4.png" style="display: block; margin: 0; padding: 0;">
+                            <img src="3_4.png" alt="Plotly trace settings screenshot with BJD selected for X axis and Normalized Flux for Y axis" style="display: block; margin: 0; padding: 0;">
                             <b style="margin: 3px; padding: 3px; line-height: 1; text-align: center;"></b>
                         </div>
                     </div>
                     <br />
                     <p><b>Make sure you’re on the correct tab (blue arrow). After that, select “BJD…” for X and “Normalized Flux” for Y under the trace 0 tab.</b> <br /> This then plots <i>brightness vs time</i> graph or essentially the light curve.</p>
                     <div style="display: flex; flex-direction: column; align-items: center; margin: 0;">
-                        <img src="4_4.png" style="display: block; margin: 0; padding: 0;">
+                        <img src="4_4.png" alt="Normalized flux vs time plotted in Plotly representing a star's light curve" style="display: block; margin: 0; padding: 0;">
                     </div>
                     <br />
 
                     <h2>2. Analysing the Light Curve</h2>
                     <div class="image-text-layout-3">
                     <div class="image-content-3">
-                        <img src="5_4.png" alt="Description">
+                        <img src="5_4.png" alt="Zoomed-in Plotly view of a transit event used to measure transit depth" >
                     </div>
                     <div class="text-content-3">
                             <p>On Plotly, feel free to play around with the tools on the top right.</p>
@@ -1224,7 +1265,7 @@
                     <b style="font-size: 1.15em;">Zooming into the first transit inorder to calculate the size of this planet:</b>
                     <div class="image-text-layout-3">
                     <div class="image-content-3">
-                    <img src="6_4.png" alt="Description">
+                    <img src="6_4.png" alt="Close-up of a transit in the light curve used to compute planet radius (Rp = R*√depth)" >
                     </div>
                     <div class="text-content-3">
                         <div style="margin-left: 20px;">
@@ -1243,7 +1284,7 @@
                                     <br />
                                     <p>Avoiding the intricacies of vast catalogs, a simple Google search with star's TIC ID can reveal its radius quickly.</p>
                                     <div class="image-content-3">
-                                        <img src="7_4.png" alt="Description">
+                                        <img src="7_4.png" alt="Search snippet showing how to look up a star's radius (R*) to convert transit depth into planet radius" >
                                     </div>
                                     
                                 </ul>
@@ -1279,7 +1320,7 @@
                     <b style="font-size: 1.15em;">Zooming out, we find another transit with approximately the same depth, indicating that its the same planet causing it. Using the time difference between these two, we can easily deduce the orbital period (yr) on the planet.</b>
                     <div class="image-text-layout-3">
                     <div class="image-content-3">
-                    <img src="9_4.png" alt="Description">
+                    <img src="9_4.png" alt="Light curve segment showing two transits; used to compute the orbital period between events" >
                     </div>
                     <div class="text-content-3">
                         <div style="margin-left: 20px;">
